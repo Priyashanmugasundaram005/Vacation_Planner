@@ -1,0 +1,74 @@
+
+<html>
+    <head>
+        <title> Welcome</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="jquery-3.3.1.min.js"></script>
+        <script>
+$(document).ready(function(){
+$('li').hover(function(){
+$(this).find('ul > li').stop().slideToggle(400); //This is the slide//You can also use the fadeToggle propertites 
+    
+}); 
+});
+</script>
+ <style type="text/css">
+ul{
+     margin:0;
+     padding:0;
+     list-style: none;
+}  
+ul li{
+        float: left;
+        width: 220px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background: rgb(0, 191, 255);        
+       }
+ul li a{
+           text-decoration: none;
+           color:#fff;    
+}   
+ul li li{
+           display:none;
+           background: black;
+           color: #fff;
+}
+ul li li a{
+           text-decoration: none;
+           color:#fff;           
+       }
+ul li li:hover{
+           background: lightpink;           
+       }
+</style>  
+      </head>
+    <body background="v1.jpg">
+        <div>
+            <ul id="sortable">
+<li><a href="#">Home</a>
+    <ul>
+    <li><a href="#">Our Courses</a></li>
+    <li><a href="#">Team</a></li>    
+</ul>   
+</li>       
+<li><a href="#">About Us</a></li>
+<li><a href="#">Services</a>
+    <ul>
+    <li><a href="#">Workshop</a></li>
+    <li><a href="#">Support</a></li>    
+    <li><a href="#">Techical Review</a></li>
+    <li><a href="#">Research Team</a></li>
+    </ul>
+</li> 
+<li><a href="#">Quiz</a>
+    <ul>
+    <li><a href="#">Anroid</a></li>
+    <li><a href="#">Java</a></li>    
+    <li><a href="#">iPhone</a></li>
+    <li><a href="#">SAP</a></li>
+    </ul>
+</li>    
+</ul></div></body></html>

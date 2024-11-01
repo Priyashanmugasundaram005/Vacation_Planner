@@ -1,0 +1,132 @@
+h1{
+text-align: center;
+    display: block;
+    font-size: 30px;
+    color: darkgreen;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
+}
+h2{
+    text-align: center;
+    color: darkolivegreen;
+}
+p
+{
+text-indent: 10%;
+font-size: 20px;
+color: rgb(2, 2, 97);
+}
+ul{
+    color: forestgreen;
+}
+.reg{
+margin-top: 20px;
+display: block;
+column-gap: 10px;
+}
+body{
+    background-image: url('https://tse2.mm.bing.net/th?id=OIP.YHBt5hszzg50-2i3dJXdqQHaEK&pid=Api&P=0&h=180');
+    background-size:  no-repeat;
+    background-size:  cover;
+    
+
+}
+.reg
+{
+    font-size:larger;
+    color: black;
+    background-image: 'https://tse3.mm.bing.net/th?id=OIP.45aPeI6YDJL5dMUKErPEWgHaEK&pid=Api&P=0&h=180';
+}
+
+.beach{
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 20px;
+    border-color: black;
+   font-size: 20px;
+   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    
+}
+.mountain{
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.mall{
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+body {margin:0;}
+.topnav {
+  overflow: hidden;
+  background-color: #333333;
+}
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.topnav a.active {
+    
+    background-color:#0c9809;
+    color: white;
+    
+}
+.topnav a.a 
+{
+    padding-left: 70%;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+.dropdown .dropbtn {
+    cursor: pointer;
+    padding: 14px 16px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: inherit;
+    font-family: inherit;
+    font-size: 16px;
+    margin: 0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-align: left;
+}
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+

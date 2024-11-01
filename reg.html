@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="proj2.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <title>Vacation Planner Registration</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+        .topnav a, .dropdown .dropbtn {
+            float: left;
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .dropdown {
+            float: left;
+            overflow: hidden;
+            position: relative;
+        }
+        .dropdown .dropbtn {
+            cursor: pointer;
+            background-color: #333;
+            border: none;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            top: 100%;
+            left: 0;
+        }
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            text-align: left;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+        input[type="text"], input[type="email"], input[type="date"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: rgb(249, 70, 4);
+            margin-bottom: 15px;
+        }
+        .total-cost {
+            margin-top: 20px;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function(){
+            $('.dropdown').hover(function(){
+                $(this).find('.dropdown-content').stop().slideToggle(400);
+            });
+        });
+
+        const costPerPerson = 1000; // Set the static cost per person
+
+        function validateForm() {
+            let errorMessage = document.getElementById("error-message");
+            errorMessage.innerHTML = ""; // Clear any previous error messages
+
+            // Validate required fields
+            const inputs = ["name", "email", "phone", "destination", "startDate", "endDate", "quantity"];
+            for (const input of inputs) {
+                if (!document.getElementById(input).value) {
+                    errorMessage.innerHTML = "All fields are required.";
+                    return false;
+                }
+            }
+
+            // Email validation
+            let email = document.getElementById("email").value;
+            let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(email)) {
+                errorMessage.innerHTML = "Please enter a valid email address.";
+                return false;
+            }
+
+            // Phone number validation (10 digits)
+            let phone = document.getElementById("phone").value;
+            if (!/^\d{10}$/.test(phone)) {
+                errorMessage.innerHTML = "Please enter a valid 10-digit phone number.";
+                return false;
+            }
+
+            // Date validation
+            let startDate = new Date(document.getElementById("startDate").value);
+            let endDate = new Date(document.getElementById("endDate").value);
+            if (startDate >= endDate) {
+                errorMessage.innerHTML = "Start date must be before the end date.";
+                return false;
+            }
+
+            // If everything is valid, display the details
+            displayDetails();
+            return false; // Prevent form submission
+        }
+
+        function displayDetails() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const destination = document.getElementById("destination").value;
+            const startDate = document.getElementById("startDate").value;
+            const endDate = document.getElementById("endDate").value;
+            const quantity = document.getElementById("quantity").value;
+
+            document.getElementById("details").innerHTML = `
+                <h2>Your Submitted Details</h2>
+                <p>Name: ${name}</p>
+                <p>Email: ${email}</p>
+                <p>Phone Number: ${phone}</p>
+                <p>Destination: ${destination}</p>
+                <p>Start Date: ${startDate}</p>
+                <p>End Date: ${endDate}</p>
+                <p>Number of Persons: ${quantity}</p>
+                <p>Total Cost: $${quantity * costPerPerson}</p>
+            `;
+        }
+
+        // Update total cost on quantity change
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("quantity").addEventListener("input", updateTotal);
+        });
+
+        function updateTotal() {
+            let quantity = parseInt(document.getElementById("quantity").value) || 1;
+            let totalCost = quantity * costPerPerson;
+            document.getElementById("total-cost").innerText = "Total: $" + totalCost.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <div class="topnav">
+        <div class="dropdown">
+            <a href="proj2.html">Home</a>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Destinations</button>
+            <div class="dropdown-content">
+                <a href="#beach">Beach</a>
+                <a href="#mountains">Mountains</a>
+                <a href="#epic-places">Epic Places</a>
+            </div>
+        </div>
+        <a href="reg.html">Register</a>
+        <a href="#contact">Contact</a>
+        <a href="#service">Services</a>
+    </div>
+
+    <h1>Welcome to Registration</h1>
+    <p>Welcome to the first step of your incredible journey! By registering with JVP Vacation Planner, you’ll unlock access to tailored travel experiences. Our registration form is quick and easy, ensuring you get started on planning your perfect getaway.</p>
+    
+    <div class="reg">
+        <h2>Vacation Planner Form</h2>
+        <form id="vacationForm" onsubmit="return validateForm()">
+            <div class="error" id="error-message"></div>
+            
+            Name: <input type="text" id="name" placeholder="Enter your name" required><br>
+            Email: <input type="email" id="email" placeholder="Enter your email" required><br>
+            Phone Number: <input type="text" id="phone" placeholder="Enter your phone number" required><br>
+            Destination: <input type="text" id="destination" placeholder="Enter your destination" required><br>
+            Start Date: <input type="date" id="startDate" required><br>
+            End Date: <input type="date" id="endDate" required><br>
+            Number of persons: <input type="number" id="quantity" value="1" min="1" required><br>
+            
+            <input type="submit" value="Submit">
+        </form>
+
+        <div class="total-cost">
+            <h2>Total Cost</h2>
+            <p id="total-cost">Total: $0</p>
+        </div>
+        <div id="details"></div> <!-- Display submitted details here -->
+    </div>
+</body>
+</html>
